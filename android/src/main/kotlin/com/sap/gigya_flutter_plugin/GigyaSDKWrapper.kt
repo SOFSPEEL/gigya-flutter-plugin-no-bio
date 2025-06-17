@@ -14,8 +14,6 @@ import com.gigya.android.sdk.api.IApiRequestFactory
 import com.gigya.android.sdk.auth.GigyaAuth
 import com.gigya.android.sdk.auth.GigyaOTPCallback
 import com.gigya.android.sdk.auth.resolvers.IGigyaOtpResult
-import com.gigya.android.sdk.biometric.GigyaPromptInfo
-import com.gigya.android.sdk.biometric.IGigyaBiometricCallback
 import com.gigya.android.sdk.interruption.IPendingRegistrationResolver
 import com.gigya.android.sdk.interruption.link.ILinkAccountsResolver
 import com.gigya.android.sdk.network.GigyaError
@@ -54,8 +52,6 @@ class GigyaSDKWrapper<T : GigyaAccount>(application: Application, accountObj: Cl
 
     private var sdkAuth: GigyaAuth
 
-    private var sdkBiometric: GigyaBiometric
-
     private var resolverHelper: ResolverHelper = ResolverHelper()
 
     private var activity: Activity? = null
@@ -76,7 +72,7 @@ class GigyaSDKWrapper<T : GigyaAccount>(application: Application, accountObj: Cl
         Gigya.setApplication(application)
         sdk = Gigya.getInstance(accountObj)
         sdkAuth = GigyaAuth.getInstance()
-        sdkBiometric = GigyaBiometric.getInstance()
+
 
         try {
             val pInfo: PackageInfo =
